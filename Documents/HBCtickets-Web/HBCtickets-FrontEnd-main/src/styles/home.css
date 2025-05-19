@@ -1,0 +1,53 @@
+/* Component & utility layers only — NO repitas @tailwind base/components/utilities */
+
+@layer components {
+  /* ---------- Layout ---------- */
+  .hbc-container  { @apply flex flex-col min-h-screen bg-gray-50 dark:bg-neutral-900; }
+  .hbc-header-fix { @apply fixed top-0 inset-x-0 z-20; }
+  .hbc-bottom-fix { @apply fixed bottom-0 inset-x-0 z-20; }
+  .hbc-main       { @apply pt-24 pb-20 flex-grow; }
+
+  /* ---------- Hero / Carousel ---------- */
+  .carousel-overlay {
+    @apply absolute inset-0 flex flex-col justify-center items-center text-white
+           bg-black/30 backdrop-blur-sm px-4 text-center;
+  }
+  .carousel-title { @apply text-2xl md:text-3xl font-bold mb-4 drop-shadow; }
+
+  /* ---------- Search ---------- */
+  .search-box  {
+    @apply flex items-center bg-white/20 backdrop-blur-md px-3 py-2 rounded-full w-full max-w-md
+           focus-within:ring-2 focus-within:ring-primary;
+  }
+  .search-input { @apply flex-grow bg-transparent placeholder-white text-white focus:outline-none; }
+
+  /* ---------- Sections ---------- */
+  .section-title { @apply text-xl md:text-2xl font-semibold px-4 mb-4; }
+
+  /* ---------- Grid destacado ---------- */
+  .grid-destacado { @apply grid gap-4 px-4 sm:grid-cols-2 md:grid-cols-3; }
+  .card-destacado { @apply cursor-pointer overflow-hidden rounded-lg shadow transition
+                           hover:shadow-lg hover:-translate-y-0.5; }
+  .card-img       { @apply w-full h-40 object-cover; }
+
+  /* ---------- Horizontal scrollers ---------- */
+  .h-scroll     { @apply flex gap-4 overflow-x-auto px-4 scroll-smooth no-scrollbar; }
+  .scroll-card  { @apply min-w-[200px] cursor-pointer transition transform hover:-translate-y-1; }
+  .scroll-img   { @apply w-full h-32 object-cover rounded-md; }
+  .scroll-title { @apply mt-2 font-medium line-clamp-2; }
+  .scroll-info  { @apply flex items-center text-sm text-gray-600 mt-1; }
+  .icon-red     { @apply text-red-500 mr-1 shrink-0; }
+  .icon-gray    { @apply text-gray-500 mr-1 shrink-0; }
+
+  /* ---------- Place-holder pulse ---------- */
+  .scroll-card-pulse { @apply animate-pulseSoft bg-gray-200 dark:bg-neutral-700; }
+
+  /* ---------- Footer spacer ---------- */
+  .footer-spacer { @apply h-64; }
+}
+
+@layer utilities {
+  /* Oculta scrollbar en WebKit / Firefox */
+  .no-scrollbar::-webkit-scrollbar { display: none; }
+  .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+}
