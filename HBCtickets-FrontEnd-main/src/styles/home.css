@@ -1,0 +1,26 @@
+/* src/styles/home.css */
+@layer components {
+  /* Test: make all event titles red */
+  .card-title,
+  .item-title {
+    @apply text-red-500;
+  }
+
+  /* Your “neon” Home styles: */
+  .hbc-container {
+    @apply flex flex-col min-h-screen items-center justify-center
+           bg-gradient-to-r from-pink-500 via-purple-500 to-indigo-500
+           text-white font-extrabold;
+  }
+  .hbc-header {
+    @apply fixed top-0 inset-x-0 p-6 bg-black/80 backdrop-blur-md
+           text-yellow-300 shadow-2xl;
+  }
+  /* …and the rest of your Home-specific @apply blocks… */
+}
+
+@layer utilities {
+  .no-scrollbar::-webkit-scrollbar { display: none; }
+  .no-scrollbar { scrollbar-width: none; -ms-overflow-style: none; }
+  /* your custom spinSlow is already in theme.animation */
+}

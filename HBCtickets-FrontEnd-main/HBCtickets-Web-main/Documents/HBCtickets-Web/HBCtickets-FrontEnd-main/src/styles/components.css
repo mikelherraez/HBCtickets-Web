@@ -1,0 +1,177 @@
+
+/* -------- Variables globales -------- */
+:root {
+  --color-primary: #3498db;
+  --color-primary-dark: #297fb8;
+  --color-secondary: #2ecc71;
+  --color-accent: #e74c3c;
+  --color-neutral-100: #f5f7fa;
+  --color-neutral-300: #cbd2d9;
+  --color-neutral-600: #616e7c;
+  --font-sans: 'Inter', sans-serif;
+  --font-heading: 'Poppins', sans-serif;
+  --shadow-card: 0 4px 14px rgba(0,0,0,0.1);
+}
+
+@layer base {
+  /* Reset básico */
+  *, *::before, *::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+  body {
+    font-family: var(--font-sans);
+    background: var(--color-neutral-100);
+    color: #333;
+  }
+}
+
+@layer components {
+  /* Header */
+  .header {
+    @apply fixed inset-x-0 z-30 bg-primary shadow-card transition-all duration-500;
+  }
+  .header.scrolled {
+    @apply bg-primary/80 backdrop-blur-sm;
+  }
+  .header .container {
+    @apply max-w-[1200px] mx-auto flex items-center justify-between px-6 py-4;
+  }
+  .header .logo {
+    @apply h-12 object-contain;
+  }
+  .header .user-link {
+    @apply text-white font-medium no-underline hover:underline;
+  }
+  .header .menu-btn {
+    @apply bg-none border-none text-white cursor-pointer transition-colors;
+  }
+  .header .menu-btn:hover {
+    @apply text-primary-dark;
+  }
+  .header__dropdown {
+    @apply bg-primary-dark border-t border-primary/70;
+  }
+  .header__dropdown a {
+    @apply inline-block text-white font-semibold px-4 py-2 no-underline transition-colors;
+  }
+  .header__dropdown a:hover {
+    @apply text-secondary;
+  }
+
+  /* Bottom Navigation */
+  .bottom-nav {
+    @apply fixed inset-x-0 bottom-0 flex bg-primary border-t border-primary-dark z-20;
+  }
+  .bottom-nav a {
+    @apply flex-1 text-center py-3 text-white text-xs no-underline transition-opacity transition-background;
+  }
+  .bottom-nav a.active,
+  .bottom-nav a:hover {
+    @apply bg-primary-dark opacity-100;
+  }
+  .bottom-nav a:not(.active) {
+    @apply opacity-75;
+  }
+
+  /* Footer */
+  .footer {
+    @apply bg-primary text-white py-10 mt-16;
+  }
+  .footer__section {
+    @apply mb-8 text-center;
+  }
+  .footer__title {
+    @apply font-heading text-xl mb-4;
+  }
+  .footer__logos {
+    @apply flex flex-wrap justify-center gap-6;
+  }
+  .footer__logo {
+    @apply h-12 object-contain;
+  }
+  .footer__bottom {
+    @apply border-t border-white/30 pt-4 text-sm text-center;
+  }
+
+  /* Event Card */
+  .event-card {
+    @apply relative overflow-hidden rounded-xl shadow-card bg-white transition-transform duration-300 ease-in-expo;
+  }
+  .event-card:hover {
+    @apply scale-105 shadow-2xl;
+  }
+  .event-card::before {
+    content: '';
+    @apply absolute inset-0 bg-gradient-to-t from-black/30 to-transparent opacity-0 transition-opacity duration-300;
+  }
+  .event-card:hover::before {
+    @apply opacity-100;
+  }
+  .event-card__image {
+    @apply w-full h-48 object-cover;
+  }
+  .event-card__body {
+    @apply p-6;
+  }
+  .event-card__title {
+    @apply font-heading text-lg mb-2;
+  }
+  .event-card__meta {
+    @apply flex items-center text-neutral-600 text-sm mb-4;
+  }
+  .event-card__meta svg {
+    @apply mr-1 text-primary;
+  }
+  .event-card__badge {
+    @apply bg-secondary/20 text-secondary font-semibold px-3 py-1 rounded-full text-xs;
+  }
+  .event-card__btn {
+    @apply bg-primary text-white px-4 py-2 rounded-md transition-colors;
+  }
+  .event-card__btn:hover {
+    @apply bg-primary-dark;
+  }
+
+  /* Filter Bar */
+  .filter-bar__btn {
+    @apply flex items-center gap-2 px-4 py-2 border border-neutral-300 rounded-lg bg-white transition-shadow transition-border;
+  }
+  .filter-bar__btn:hover {
+    @apply border-primary shadow-card;
+  }
+  .filter-bar__btn.active {
+    @apply border-primary bg-primary/10 text-primary;
+  }
+
+  /* Botones comunes */
+  .btn-primary {
+    @apply inline-flex items-center gap-2 px-6 py-3 rounded-xl font-medium shadow-card bg-primary text-white transition-transform duration-200;
+  }
+  .btn-primary:hover {
+    @apply bg-primary-dark -translate-y-1;
+  }
+  .btn-secondary {
+    @apply inline-flex items-center gap-2 px-6 py-3 rounded-xl font-medium border-2 border-secondary text-secondary transition-colors;
+  }
+  .btn-secondary:hover {
+    @apply bg-secondary text-white;
+  }
+
+  /* Formularios */
+  .form-input,
+  .form-select {
+    @apply w-full px-4 py-3 border border-neutral-300 rounded-lg text-base transition-border transition-shadow;
+  }
+  .form-input:focus,
+  .form-select:focus {
+    @apply outline-none border-primary ring-4 ring-primary/25;
+  }
+  .form-btn {
+    @apply block w-full bg-secondary text-white py-3 font-semibold rounded-lg mt-4 transition-colors;
+  }
+  .form-btn:hover {
+    @apply bg-secondary/90;
+  }
+}
